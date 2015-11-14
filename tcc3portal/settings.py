@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~
 
     tcc3portal settings
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 DEBUG = True
 SECRET_KEY = "YOU CAN NOT GUESS IT IT IT IT."

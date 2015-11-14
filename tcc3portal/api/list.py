@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~
 
     tcc3portal api list module.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from flask import Blueprint, url_for, render_template
 

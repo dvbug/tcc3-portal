@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~~~~~~
 
     tcc3portal tcc_core factory module.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from flask import Flask
 

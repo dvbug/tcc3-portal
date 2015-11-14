@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~
 
     tcc_core package.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager

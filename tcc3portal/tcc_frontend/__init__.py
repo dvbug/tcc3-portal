@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~
 
     tcc3portal tcc_frontend ui templates package.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 
 from flask import Blueprint, Flask, url_for, current_app

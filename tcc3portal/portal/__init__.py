@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~
 
     launchpad portal application package.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from flask import render_template
 # from flask_nav.elements import Navbar, View, Subgroup, Link, Text, Separator

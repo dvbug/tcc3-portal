@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~~~~~~
 
     tcc3portal tcc_core middleware module.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 
 from werkzeug.urls import url_decode

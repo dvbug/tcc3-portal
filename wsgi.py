@@ -4,6 +4,8 @@
     ~~~~
 
     tcc3portal wsgi interface.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 
 from werkzeug.serving import run_simple

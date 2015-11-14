@@ -5,6 +5,8 @@
     ~~~~~~~~~~~~~~~~~
 
     tcc3portal db models.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 import sys
 from flask_login import UserMixin, AnonymousUserMixin

@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~
 
     User endpoints.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from flask import Blueprint, current_app
 from flask_login import login_required

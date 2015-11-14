@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~
 
     tcc3portal api application package.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from functools import wraps
 

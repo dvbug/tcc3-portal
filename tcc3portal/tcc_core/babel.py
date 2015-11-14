@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~~~~~~
 
     tcc3portal tcc_core babel module, based on Flask-Babel.
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 from flask import Flask, request
 from flask_babel import Babel, lazy_gettext, gettext as _

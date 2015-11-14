@@ -4,6 +4,8 @@
     ~~~~~~~~~~~~~~~~~~~~~~~~~
 
     tcc3portal tcc_core sso module, used for single-sign-on login/logout/register
+    :copyright: (c) 2015 by Vito.
+    :license: GNU, see LICENSE for more details.
 """
 import urllib.parse
 import urllib.request
