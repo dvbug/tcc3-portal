@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-13 19:45+0800\n"
+"POT-Creation-Date: 2015-11-15 03:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
 
+#: templates/page2.html:5
+msgid "TCC3 Portal"
+msgstr ""
+
+#: templates/page2.html:6
+msgid "Page2"
+msgstr ""
+
 #: templates/layouts/base.html:10
 msgid "Dashboard"
+msgstr ""
+
+#: templates/layouts/base.html:11
+msgid "OtherPage"
+msgstr ""
+
+#: templates/layouts/base.html:13
+msgid "Tech Support"
+msgstr ""
+
+#: templates/layouts/base.html:26
+msgid "Level 2 menu"
+msgstr ""
+
+#: templates/layouts/base.html:28 templates/layouts/base.html:29
+#: templates/layouts/base.html:30
+msgid "Level 3 Item"
+msgstr ""
+
+#: templates/layouts/base.html:42
+msgid "Api"
 msgstr ""
 

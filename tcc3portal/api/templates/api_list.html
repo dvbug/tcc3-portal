@@ -6,7 +6,7 @@
         <ul class="">
             {% for api_group in apis | groupby('part') %}
                 <div class="list-group">
-                    <strong class="list-group-item-heading">Part of {{ api_group.grouper }}</strong>
+                    <strong class="list-group-item-heading">{{ _('Part of %(grouper)s', grouper=api_group.grouper) }}</strong>
                     {% for api in api_group.list %}
                         <li class="list-group-item" style="margin-bottom: 18px">
                             <div class="list-group-item-text">

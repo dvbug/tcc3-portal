@@ -1,16 +1,16 @@
-# Chinese (Simplified, China) translations for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+# Chinese (Simplified, China) translations for tcc3portal.
+# Copyright (C) 2015 Vito
+# This file is distributed under the same license as the tcc3portal project.
+# Vito <vito2015@live.com>, 2015.
 #
-#, fuzzy
+# ###, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-13 19:45+0800\n"
-"PO-Revision-Date: 2015-11-13 19:47+0800\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: tcc3portal 1.0.1\n"
+"Report-Msgid-Bugs-To: vito2015@live.com\n"
+"POT-Creation-Date: 2015-11-15 03:51+0800\n"
+"PO-Revision-Date: 2015-11-15 03:41+0800\n"
+"Last-Translator: Vito <vito2015@live.com>\n"
 "Language: zh_Hans_CN\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -18,4 +18,50 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
+
+#: templates/frontend/base.html:7
+msgid "TCC3 Portal"
+msgstr "TCC3门户"
+
+#: templates/frontend/base.html:9
+msgid "A TCC3 flask web portal site frame"
+msgstr "一个基于Flask架构的网站门户框架"
+
+#: templates/frontend/footer.html:7
+#, python-format
+msgid "Powered by %(flask)s"
+msgstr "%(flask)s技术提供"
+
+#: templates/frontend/footer.html:11
+#, python-format
+msgid "Copyright &copy; 2015, %(author)s"
+msgstr "Copyright &copy; 2015, %(author)s"
+
+#: templates/frontend/navbar_login.html:2
+msgid "Welcome, Anonymous!"
+msgstr "欢迎，游客！"
+
+#: templates/frontend/navbar_login.html:3
+msgid "Login"
+msgstr "登录"
+
+#: templates/frontend/navbar_login.html:4
+msgid "Signup"
+msgstr "注册"
+
+#: templates/frontend/navbar_login.html:9
+msgid "Profile"
+msgstr "个人信息"
+
+#: templates/frontend/navbar_login.html:11
+msgid "Logout"
+msgstr "注销登录"
+
+#: templates/frontend/errors/404.html:6
+msgid "Page Not Found."
+msgstr "访问的页面不存在。"
+
+#: templates/frontend/errors/500.html:6
+msgid "Internal Server Error."
+msgstr "服务器内部错误。"
 

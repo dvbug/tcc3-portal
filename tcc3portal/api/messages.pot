@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-13 19:45+0800\n"
+"POT-Creation-Date: 2015-11-15 03:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,4 +16,58 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
+
+#: list.py:20
+msgid "List"
+msgstr ""
+
+#: list.py:22
+msgid "show all apis."
+msgstr ""
+
+#: list.py:25 list.py:30
+msgid "User"
+msgstr ""
+
+#: list.py:27
+msgid "show all users."
+msgstr ""
+
+#: list.py:32
+msgid "show a single user what you wanna."
+msgstr ""
+
+#: templates/api_list.html:9
+#, python-format
+msgid "Part of %(grouper)s"
+msgstr ""
+
+#: templates/layouts/base.html:5
+msgid "Api"
+msgstr ""
+
+#: templates/layouts/base.html:10
+msgid "Home"
+msgstr ""
+
+#: templates/layouts/base.html:11
+msgid "OtherPage1"
+msgstr ""
+
+#: templates/layouts/base.html:12
+msgid "OtherPage2"
+msgstr ""
+
+#: templates/layouts/base.html:14
+msgid "Tech Support"
+msgstr ""
+
+#: templates/layouts/base.html:25
+msgid "Level 2 menu"
+msgstr ""
+
+#: templates/layouts/base.html:27 templates/layouts/base.html:28
+#: templates/layouts/base.html:29
+msgid "Level 3 menu"
+msgstr ""
 

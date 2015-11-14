@@ -1,16 +1,16 @@
-# Chinese (Simplified, China) translations for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+# Chinese (Simplified, China) translations for tcc3portal.
+# Copyright (C) 2015 Vito
+# This file is distributed under the same license as the tcc3portal project.
+# Vito <vito2015@live.com>, 2015.
 #
-#, fuzzy
+# ###, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-13 19:45+0800\n"
-"PO-Revision-Date: 2015-11-13 19:47+0800\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: tcc3portal 1.0.1\n"
+"Report-Msgid-Bugs-To: vito2015@live.com\n"
+"POT-Creation-Date: 2015-11-15 03:51+0800\n"
+"PO-Revision-Date: 2015-11-15 03:41+0800\n"
+"Last-Translator: Vito <vito2015@live.com>\n"
 "Language: zh_Hans_CN\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
 
-#: sso.py:101 sso.py:106
+#: sso.py:103 sso.py:108
 msgid "Please login to access this page."
-msgstr ""
+msgstr "请登录后访问该页面。"
 
-#: sso.py:110
+#: sso.py:112
 msgid "Please login for access."
-msgstr ""
+msgstr "请登录后访问。"
 

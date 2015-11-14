@@ -8,7 +8,7 @@
     :license: GNU, see LICENSE for more details.
 """
 from flask import Flask, request
-from flask_babel import Babel, lazy_gettext, gettext as _
+from flask_babel import Babel, lazy_gettext, _
 from ..settings import LANGUAGES
 
 __all__ = ['TCC3Babel', 'lazy_gettext', '_']

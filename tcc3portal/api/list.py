@@ -8,7 +8,7 @@
     :license: GNU, see LICENSE for more details.
 """
 from flask import Blueprint, url_for, render_template
-
+from ..tcc_core.babel import _
 from .helpers import init_api
 
 bp = Blueprint('list', __name__)
@@ -17,19 +17,19 @@ bp = Blueprint('list', __name__)
 @bp.route('/')
 def api_list():
     apis = [
-        {'part': 'List',
+        {'part': _('List'),
          'url': url_for('list.api_list'),
-         'details': 'show all apis.',
+         'details': _('show all apis.'),
          'params': {},
          },
-        {'part': 'User',
+        {'part': _('User'),
          'url': url_for('users.show_list'),
-         'details': 'show all users.',
+         'details': _('show all users.'),
          'params': {},
          },
-        {'part': 'User',
+        {'part': _('User'),
          'url': url_for('users.show_user', user_name=''),
-         'details': 'show a single user what you wanna.',
+         'details': _('show a single user what you wanna.'),
          'params': [
                 {
                     'name': 'user_name',

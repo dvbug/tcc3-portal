@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-13 19:45+0800\n"
+"POT-Creation-Date: 2015-11-15 03:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
 
-#: sso.py:101 sso.py:106
+#: sso.py:103 sso.py:108
 msgid "Please login to access this page."
 msgstr ""
 
-#: sso.py:110
+#: sso.py:112
 msgid "Please login for access."
 msgstr ""
 

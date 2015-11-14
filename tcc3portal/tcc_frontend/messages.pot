@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-13 19:45+0800\n"
+"POT-Creation-Date: 2015-11-15 03:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,4 +16,50 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
+
+#: templates/frontend/base.html:7
+msgid "TCC3 Portal"
+msgstr ""
+
+#: templates/frontend/base.html:9
+msgid "A TCC3 flask web portal site frame"
+msgstr ""
+
+#: templates/frontend/footer.html:7
+#, python-format
+msgid "Powered by %(flask)s"
+msgstr ""
+
+#: templates/frontend/footer.html:11
+#, python-format
+msgid "Copyright &copy; 2015, %(author)s"
+msgstr ""
+
+#: templates/frontend/navbar_login.html:2
+msgid "Welcome, Anonymous!"
+msgstr ""
+
+#: templates/frontend/navbar_login.html:3
+msgid "Login"
+msgstr ""
+
+#: templates/frontend/navbar_login.html:4
+msgid "Signup"
+msgstr ""
+
+#: templates/frontend/navbar_login.html:9
+msgid "Profile"
+msgstr ""
+
+#: templates/frontend/navbar_login.html:11
+msgid "Logout"
+msgstr ""
+
+#: templates/frontend/errors/404.html:6
+msgid "Page Not Found."
+msgstr ""
+
+#: templates/frontend/errors/500.html:6
+msgid "Internal Server Error."
+msgstr ""
 

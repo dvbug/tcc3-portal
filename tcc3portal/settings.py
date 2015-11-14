@@ -57,5 +57,5 @@ SESSION_PROTECTION = "strong"
 BABEL_DEFAULT_LOCALE = 'zh_Hans_CN'
 LANGUAGES = {
     'zh_Hans_CN': 'Chinese',
-    'en': 'English',
+    # 'en': 'English',
 }

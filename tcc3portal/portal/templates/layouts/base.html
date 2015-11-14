@@ -8,9 +8,9 @@
 {#{% if request.endpoint == 'dashboard.index' %} class="active" {% endif %}#}
 {% block navbar_main_ul_items %}
     <li {{ utils.try_active_style('dashboard.index') }}><a href="{{ url_for('dashboard.index') }}">{{ _('Dashboard') }}</a></li>
-    <li {{ utils.try_active_style('page2.index') }}><a href="{{ url_for('page2.index') }}">Page2</a></li>
+    <li {{ utils.try_active_style('page2.index') }}><a href="{{ url_for('page2.index') }}">{{ _('OtherPage') }}</a></li>
     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tech Support<b class="caret"></b></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ _('Tech Support') }}<b class="caret"></b></a>
         <ul class="dropdown-menu menu-top">
             <li class="dropdown-submenu">
                 <a class="dropdown-toggle" href="#">flask frame</a>
@@ -23,11 +23,11 @@
                     <li><a href="http://www.pythondoc.com/Flask-RESTful/index.html" target="_blank">flask-restful</a></li>
                     <li class="divider" role="separator"></li>
                     <li class="dropdown-submenu">
-                        <a class="dropdown-toggle" href="#">Level 2 menu</a>
+                        <a class="dropdown-toggle" href="#">{{ _('Level 2 menu') }}</a>
                         <ul class="dropdown-menu">
-                            <li><a>Level 3 Item</a></li>
-                            <li><a>Level 3 Item</a></li>
-                            <li><a>Level 3 Item</a></li>
+                            <li><a>{{ _('Level 3 Item') }}</a></li>
+                            <li><a>{{ _('Level 3 Item') }}</a></li>
+                            <li><a>{{ _('Level 3 Item') }}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -39,7 +39,7 @@
 {% endblock %}
 
 {% block navbar_main_right_ul_items %}
-    <li><a href="/api">Api</a></li>
+    <li><a href="/api">{{ _('Api') }}</a></li>
     {{ super() }}
 
 {% endblock %}
