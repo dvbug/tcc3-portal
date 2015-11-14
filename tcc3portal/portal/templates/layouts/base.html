@@ -1,0 +1,54 @@
+{% extends "frontend/base.html" %}
+{% import "./macros/utils.html" as utils %}
+
+{#set a sub title or a title details, if you wanna. #}
+{#{% set subtitle = "Index" %}#}
+{#{% set titledetails = "a title details infomation after the web site title" %}#}
+
+{#{% if request.endpoint == 'dashboard.index' %} class="active" {% endif %}#}
+{% block navbar_main_ul_items %}
+    <li {{ utils.try_active_style('dashboard.index') }}><a href="{{ url_for('dashboard.index') }}">{{ _('Dashboard') }}</a></li>
+    <li {{ utils.try_active_style('page2.index') }}><a href="{{ url_for('page2.index') }}">Page2</a></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tech Support<b class="caret"></b></a>
+        <ul class="dropdown-menu menu-top">
+            <li class="dropdown-submenu">
+                <a class="dropdown-toggle" href="#">flask frame</a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://dormousehole.readthedocs.org/en/latest/index.html" target="_blank">flask</a></li>
+                    <li><a href="http://docs.jinkan.org/docs/flask-wtf/index.html" target="_blank">flask-wtf</a></li>
+                    <li><a href="http://pythonhosted.org/flask-nav/" target="_blank">flask-nav</a></li>
+                    <li><a href="http://flask-pymongo.readthedocs.org/en/latest/" target="_blank">flask-pymongo</a></li>
+                    <li><a href="http://www.pythonhosted.org/Flask-Bootstrap/" target="_blank">flask-bootstrap</a></li>
+                    <li><a href="http://www.pythondoc.com/Flask-RESTful/index.html" target="_blank">flask-restful</a></li>
+                    <li class="divider" role="separator"></li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-toggle" href="#">Level 2 menu</a>
+                        <ul class="dropdown-menu">
+                            <li><a>Level 3 Item</a></li>
+                            <li><a>Level 3 Item</a></li>
+                            <li><a>Level 3 Item</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="divider" role="separator"></li>
+            <li><a href="https://www.mongodb.org/" target="_blank">mongodb</a></li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block navbar_main_right_ul_items %}
+    <li><a href="/api">Api</a></li>
+    {{ super() }}
+
+{% endblock %}
+
+{% block navbar_main_right_ul_items_login %}
+    {{ super() }}
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    {{ utils.static_css("default.css") }}
+{% endblock %}

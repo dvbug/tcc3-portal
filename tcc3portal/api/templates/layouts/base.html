@@ -1,0 +1,52 @@
+{% extends "frontend/base.html" %}
+{% import "./macros/utils.html" as utils %}
+
+{#set a sub title or a title details, if you wanna. #}
+{% set subtitle = "Api" %}
+{#{% set titledetails = "a title details infomation after the web site title" %}#}
+
+
+{% block navbar_main_ul_items %}
+    <li {{ utils.try_active_style('list.api_list') }}><a href="{{ url_for('list.api_list') }}">Home</a></li>
+    <li {{ utils.try_active_style('#') }}><a href="#">Page2</a></li>
+    <li {{ utils.try_active_style('#') }}><a href="#">Page3</a></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tech Support<b class="caret"></b></a>
+        <ul class="dropdown-menu menu-top">
+            <li><a href="http://dormousehole.readthedocs.org/en/latest/index.html">flask</a></li>
+            <li><a href="http://docs.jinkan.org/docs/flask-wtf/index.html">flask-wtf</a></li>
+            <li><a href="http://pythonhosted.org/flask-nav/">flask-nav</a></li>
+            <li><a href="http://flask-pymongo.readthedocs.org/en/latest/">flask-pymongo</a></li>
+            <li><a href="http://www.pythonhosted.org/Flask-Bootstrap/">flask-bootstrap</a></li>
+            <li><a href="http://www.pythondoc.com/Flask-RESTful/index.html">flask-restful</a></li>
+            <li class="divider" role="separator"></li>
+            <li><a href="https://www.mongodb.org/">mongodb</a></li>
+            <li class="dropdown-submenu">
+                <a class="dropdown-toggle" href="#">Level 2 menu</a>
+                <ul class="dropdown-menu">
+                    <li><a>Level 3 Item</a></li>
+                    <li><a>Level 3 Item</a></li>
+                    <li><a>Level 3 Item</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block navbar_main_right_ul_items %}
+{{ super() }}
+
+{% endblock %}
+
+{#{% block navbar_main_right_ul_items_login %}#}
+{#    <li><a href="/register">Signup</a></li>#}
+{#    <li><a href="/login">Login</a></li>#}
+{#{% endblock %}#}
+{% block navbar_main_right_ul_items_login %}
+{{ super() }}
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    {{ utils.static_css("default.css") }}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% import "macros/utils.html" as utils_local %}
+
+{% block content %}
+    <div class="container">
+        <ul class="">
+            {% for api_group in apis | groupby('part') %}
+                <div class="list-group">
+                    <strong class="list-group-item-heading">Part of {{ api_group.grouper }}</strong>
+                    {% for api in api_group.list %}
+                        <li class="list-group-item" style="margin-bottom: 18px">
+                            <div class="list-group-item-text">
+                                <pre class="pre-scrollable" style="padding: 2px 4px"><h4><a href="{{ api.short_url }}{% if api.params %}{{ api.params[0].name }}{% endif %}" target="_blank">{{ api.url }}</a></h4></pre>
+                                <p><i class="text-info right">--{{ api.details }}</i></p>
+                                {% if api.params %}
+                                    <ul>
+                                    <strong>Parameters:</strong>
+                                    {% for p in api.params %}
+                                         <li class="list-inline"><strong>:param </strong><em>{{ p.name }}</em>
+                                             <strong>{{ utils_local.space(10) }}---</strong><em>{{ p.type }}</em></li>
+                                    {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

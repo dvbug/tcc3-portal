@@ -1,0 +1,14 @@
+{% if g.user.is_anonymous %}
+    <li style="margin: 0 12px 0 0">Welcome, Anonymous!
+        <a id='l1' style="border-bottom:none;display: inline-block" href="{{ url_for('sso.login') }}">Login</a>|
+        <a id='l2' style="border-bottom:none;display: inline-block" href="{{ url_for('sso.register') }}", target="_blank">Signup</a></li>
+{% else %}
+    <li class="dropdown pull-right" style="margin: 0 12px 0 0">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ g.user.name }}<b class="caret"></b></a>
+        <ul class="dropdown-menu ">
+            <li><a href="#">Profile</a></li>
+            <li class="divider" role="separator"></li>
+            <li><a href="{{ url_for('sso.logout') }}">Logout</a></li>
+        </ul>
+    </li>
+{% endif %}

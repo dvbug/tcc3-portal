@@ -1,0 +1,127 @@
+{%- extends "bootstrap/base.html" %}
+
+{#in the derive template ,you may set a sub title or a title details, if you wanna. #}
+{#{% set subtitle = "Index" %}#}
+{#{% set titledetails = "a title details infomation after the web site title" %}#}
+
+{% set default_title = "TCC3 Portal" %}
+{% set default_subtitle = None %}
+{% set default_title_details = "A TCC3 flask web portal site frame" %}
+{% set current_title = None %}
+{% set current_subtitle = None %}
+{% set current_title_details = None %}
+
+{% macro init_titles() %}
+    {% if not title %}
+        {% set current_title = default_title %}
+    {% else %}
+        {% set current_title = title %}
+    {% endif %}
+
+    {% if not subtitle and default_subtitle|trim|length  > 0%}
+        {% set current_subtitle = default_subtitle %}
+    {% elif subtitle|trim|length  > 0 and subtitle != default_subtitle %}
+        {% set current_subtitle = subtitle %}
+    {% endif %}
+
+    {% if not titledetails and default_title_details|trim|length  > 0%}
+        {% set current_title_details = default_title_details %}
+    {% elif titledetails|trim|length  > 0 %}
+        {% set current_title_details = titledetails %}
+    {% endif %}
+
+    {{ current_title }}
+    {% if current_subtitle and current_subtitle != current_title%}
+     - {{ current_subtitle }}
+    {% endif %}
+     | {{ current_title_details }}
+{% endmacro %}
+{% macro get_title() %}
+    {% if not title %}
+        {% set current_title = default_title %}
+    {% else %}
+        {% set current_title = title %}
+    {% endif %}
+    {{ current_title }}
+{% endmacro %}
+{% macro get_subtitle() %}
+    {% if not title %}
+        {% set current_title = default_title %}
+    {% else %}
+        {% set current_title = title %}
+    {% endif %}
+    {% if not subtitle and default_subtitle|trim|length  > 0%}
+        {% set current_subtitle = default_subtitle %}
+    {% elif subtitle|trim|length  > 0 and subtitle != default_subtitle %}
+        {% set current_subtitle = subtitle %}
+    {% endif %}
+    {% if current_subtitle and current_subtitle != current_title%}
+     . {{ current_subtitle }}
+    {% endif %}
+{% endmacro %}
+{# We also set a default title, usually because we might forget to set one.
+   In our sample app, we will most likely just opt not to change it #}
+{% block title %}
+    {{ init_titles() }}
+{% endblock %}
+
+{# While we are at it, we also enable fixes for legacy browsers. First we
+   import the necessary macros: #}
+{% import "bootstrap/fixes.html" as fixes %}
+
+{# Then, inside the head block, we apply these. To not replace the header,
+   ``super()`` is used: #}
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
+{% block favicon %}
+    <link rel="shortcut icon" href="{{tcc_frontend_find_resource('img/favicon.ico', cdn='local')}}" />
+{% endblock %}
+{% endblock %}
+
+{% block styles -%}
+    {{super()}}  {# do not forget to call super or Bootstrap's own stylesheets
+                    will disappear! #}
+    <link href="{{tcc_frontend_find_resource('css/frontend-default.css', cdn='local')}}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{tcc_frontend_find_resource('js/frontend-default.js', cdn='local')}}"></script>
+{%- endblock scripts %}
+
+{# Finally, round things out with navigation #}
+{% block navbar %}
+    <nav class="navbar navbar-default navbar-fixed-top top-menu" role="navigation">
+      <div class="">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">{{ get_title() }}{{ get_subtitle() }}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            {% block navbar_main_ul_items %}
+            {% endblock %}
+          </ul>
+          <ul class="nav navbar-nav pull-right">
+            {% block navbar_main_right_ul_items %}
+                {% block navbar_main_right_ul_items_login %}
+                    {% include "frontend/navbar_login.html" %}
+                {% endblock %}
+            {% endblock %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    {% block footer %}
+        {% include "frontend/footer.html" %}
+    {% endblock %}
+{% endblock %}
