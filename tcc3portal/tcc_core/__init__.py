@@ -13,9 +13,9 @@ from mongoengine.queryset.visitor import Q
 
 from .sso import SSOClient
 from .babel import TCC3Babel, lazy_gettext, _
-from .models import User, AnonymousUser, db
+from .models import UserProfile, AnonymousUser, db
 
-__all__ = ['TCC3Babel', 'User', 'AnonymousUser',
+__all__ = ['TCC3Babel', 'UserProfile', 'AnonymousUser',
            'bootstrap', 'lm', 'babel', 'sso_client', 'db', 'lazy_gettext', '_',
            'Q', 'Tcc3PortalError', 'Tcc3PortalFormError', ]
 

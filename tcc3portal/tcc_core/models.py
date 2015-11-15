@@ -9,6 +9,7 @@
     :license: GNU, see LICENSE for more details.
 """
 import sys
+import datetime
 from flask_login import UserMixin, AnonymousUserMixin
 from flask_mongoengine import MongoEngine
 
@@ -17,18 +18,33 @@ db = MongoEngine()
 if sys.version >= '3':
     unicode = str
 
-__all__ = ['User', 'AnonymousUser', 'db']
+__all__ = ['UserProfile', 'AnonymousUser', 'db', 'GENDER_LIST']
+
+GENDER_LIST = [
+    ('M', 'Male'),
+    ('F', 'Female'),
+    ('U', 'Unknown')
+]
 
 
-class User(db.Document, UserMixin):
+class UserProfile(db.Document, UserMixin):
+    """User profile information."""
+    meta = {'collection': 'user_profile'}
 
-    name = db.StringField(required=True, max_length=64)
-    password = db.StringField(max_length=256)
-    email = db.StringField(max_length=64)
-    description = db.StringField(max_length=1024)
+    nick_name = db.StringField(required=True, max_length=24)
+    email = db.EmailField(required=True)
+
+    real_name = db.StringField(max_length=24)
+    # phones = db.ListField(db.ReferenceField(UserPhone, reverse_delete_rule=NULLIFY))
+    birth = db.DateTimeField(default=datetime.datetime.now())
+    gender = db.StringField(max_length=3, choices=GENDER_LIST, default=GENDER_LIST[2])
+    brief_description = db.StringField(max_length=140)
+
+    # is_active = db.BooleanField(required=True, default=True)
+    # is_authenticated = db.BooleanField(required=True, default=True)
 
     def __str__(self):
-        return unicode(self.name)
+        return unicode(self.nick_name)
 
     def get_id(self):
         return unicode(self.id)
@@ -36,10 +52,10 @@ class User(db.Document, UserMixin):
 
 class AnonymousUser(AnonymousUserMixin):
 
-    name = 'AnonymousUser'
+    nick_name = 'AnonymousUser'
 
     def __str__(self):
-        return unicode(self.name)
+        return unicode(self.nick_name)
 
     def get_id(self):
         return None

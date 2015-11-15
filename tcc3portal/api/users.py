@@ -11,7 +11,7 @@ from flask import Blueprint, current_app
 from flask_login import login_required
 # from flask import json
 # from . import route
-from ..tcc_core import User, Q
+from ..tcc_core import UserProfile, Q
 
 bp = Blueprint('users', __name__, url_prefix='/users')
 
@@ -23,7 +23,7 @@ def show_list():
     print(current_app)
     # a = current_user._get_current_object()
     # ret = mongo.db.users.find().sort([("_id", 1)])
-    ret = User.objects().all().order_by('+name')  # '-name' or 'name'
+    ret = UserProfile.objects().all().order_by('+nick_name')  # '-name' or 'name'
     # ret = list(map(lambda x: x, ret))
     # return JSONEncoder().default(ret)
     return ret.to_json()
@@ -34,7 +34,7 @@ def show_list():
 def show_user(user_name):
     """Return a user instance."""
     # ret = mongo.db.users.find_one_or_404({"name": user_name})
-    ret = User.objects(Q(name=user_name) | Q(email=user_name))
+    ret = UserProfile.objects(Q(nick_name=user_name) | Q(email=user_name))
 
     # return JSONEncoder().default(ret)
     return ret.to_json()

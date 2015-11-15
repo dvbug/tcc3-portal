@@ -19,7 +19,7 @@ from .helpers import get_referrer_name, \
     get_sso_center_logout_url, \
     get_sso_center_register_url, \
     get_sso_center_api_ticket_check_url
-from .models import User, AnonymousUser
+from .models import UserProfile, AnonymousUser
 from .babel import _, lazy_gettext
 
 __all__ = ['make_referrer_query', 'init_sso_login_url', 'init_sso_logout_url', 'init_sso_register_url',
@@ -113,7 +113,7 @@ class SSOClient(object):
 
         @lm.user_loader
         def load_user(user_id):
-            user = User.objects.get(id=user_id)
+            user = UserProfile.objects.get(id=user_id)
             return user
 
         # @lm.request_loader
@@ -134,8 +134,8 @@ class SSOClient(object):
                 # print('before_request ticket:', ticket)
                 result = sso_login_ticket_check(ticket)
                 if result and result['valid']:
-                    user = User.objects(name=result['user']).first()
-                    if isinstance(user, User):
+                    user = UserProfile.objects(nick_name=result['user']).first()
+                    if isinstance(user, UserProfile):
                         login_user(user)
                         print('login user:', user)
                 else:
@@ -163,7 +163,7 @@ def _register():
 
 
 def _logout():
-    redirect_url = init_sso_logout_url(g.user.name)
+    redirect_url = init_sso_logout_url(g.user.nick_name)
     logout_user()
     print(redirect_url)
     return redirect(redirect_url)
