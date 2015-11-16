@@ -11,10 +11,11 @@
 from werkzeug.serving import run_simple
 from werkzeug.wsgi import DispatcherMiddleware
 
-from tcc3portal import api, portal
+from tcc3portal import api, portal, train
 
 application = DispatcherMiddleware(portal.create_app(), {
-    '/api': api.create_app()
+    '/api': api.create_app(),
+    '/train': train.create_app(),
 })
 
 if __name__ == '__main__':
