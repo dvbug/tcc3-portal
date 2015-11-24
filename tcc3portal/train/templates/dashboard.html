@@ -48,34 +48,49 @@
             </div>
 
             <div id="datepicker-container" >
-            <div class="input-group date">
-            <input type="text" class="form-control" readonly>
-            <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-            </div>
-            <script>
-            $('#datepicker-container .input-group.date').datepicker({
-            autoclose: false,
-            todayBtn: "linked",
-            format: "mm/dd/yyyy",
-            orientation: "bottom auto",
-            });
-            </script>
+                <div class="input-group date">
+                    <input type="text" class="form-control" readonly>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                </div>
+                <script>
+                    $('#datepicker-container .input-group.date').datepicker({
+                    autoclose: false,
+                    todayBtn: "linked",
+                    format: "mm/dd/yyyy",
+                    orientation: "bottom auto",
+                    });
+                </script>
             </div>
 
             <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default">Reset</button>
-            <button type="button" class="btn btn-default" >Confirm</button>
+                <button type="button" class="btn btn-default">Reset</button>
+                <button id="btn_confirm" type="button" class="btn btn-default"
+                        onclick="getSchedules('20140702','01','plan')" >Confirm</button>
             </div>
-            <script>
-                    $('#sidebar').BootSideMenu({
-                        side:"left", // left or right
-                        autoClose:true // auto close when page loads
-                    });
-            </script>
-            </div>
-            <div id="train_graph" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            </div>
+
         </div>
+        <div id="train_graph" >
+{#            style="height: 400px; background-color: green"#}
+{#            class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2"#}
+        </div>
+    <script>
+{#        function on_train_graph_click(){#}
+{#            $.jsonp({#}
+{#                url:"http://192.168.1.125:8080/api/v1.0/schedules/20140702/01/plan",#}
+{#                success: function(data){#}
+{#                    $('#train_graph').html(data)#}
+{#                },#}
+{#                error: function() {#}
+{#                    alert("on_train_graph_click error ");#}
+{#                }#}
+{#            });#}
+{#        }#}
+        $('#sidebar').BootSideMenu({
+            side:"left", // left or right
+            autoClose:true // auto close when page loads
+        });
+    </script>
+    </div>
 </div>
 
 {% endblock %}
@@ -89,4 +104,5 @@
     {{ super() }}
 {#    {{ utils.static_js("jquery/jquery-1.11.3.min.js") }}#}
 {#    {{ utils.static_js("d3/d3.js") }}#}
+
 {% endblock %}
