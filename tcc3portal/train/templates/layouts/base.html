@@ -49,4 +49,10 @@
 {% block styles %}
     {{ super() }}
     {{ utils.static_css("default.css") }}
+
+{% endblock %}
+{% block scripts %}
+
+    {{ super() }}
+    {{ utils.static_js("d3/d3.js") }}
 {% endblock %}
