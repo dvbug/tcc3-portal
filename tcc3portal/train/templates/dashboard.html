@@ -65,7 +65,7 @@
             <div class="btn-group" role="group" aria-label="...">
                 <button type="button" class="btn btn-default">Reset</button>
                 <button id="btn_confirm" type="button" class="btn btn-default"
-                        onclick="getSchedules('20140702','01','plan')" >Confirm</button>
+                        onclick="getSchedules($('#train_graph'),'20140702','01','plan')" >Confirm</button>
             </div>
 
         </div>
@@ -97,7 +97,7 @@
 
 {% block styles %}
     {{ super() }}
-{#    {{ utils.static_css("bootstrap/bootstrap-datetimepicker.css") }}#}
+    {{ utils.static_css("train_graph.css") }}
 
 {% endblock %}
 {% block scripts %}
