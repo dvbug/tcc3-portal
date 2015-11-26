@@ -16,6 +16,12 @@ function getSchedules(parent, date,lineNo,type){
 }
 
 function draw(parent, date, json_data){
+
+    d3.select(parent.get(0)).select("svg").remove();
+    d3.select(parent.get(0)).select(".no_data_tip").remove();
+    d3.select("body").select(".svg_tooltip").remove();
+
+
     var xAxisTicksCount = 480; //有多少个横轴点, 80:30min, 160:15min, 480:5min
     var initStepWidth = 40; // 刻度步长
     //var initWidth = 20000;//影响横轴的显示范围
@@ -29,6 +35,14 @@ function draw(parent, date, json_data){
     var stations = []; // lazy load.
     var trains = [];
     var schedules = json_data.data.schedules;
+
+    if (isEmptyObject(schedules)){
+        d3.select(parent.get(0)).append('div')
+            .attr("class", "no_data_tip text-center")
+            .text("No Data.");
+        return;
+    }
+
     //trains.
     for(var trip in schedules){
         trains.push(parse_schedule(trip, schedules[trip]))
@@ -61,7 +75,6 @@ function draw(parent, date, json_data){
         width = initWidth - margin.left - margin.right,
         height = initHeight - margin.top - margin.bottom;          // 700影响运行图高度
 
-
     // 鼠标移动到列车线产生的tooltip
     var tooltip = d3.select("body")
         .append("div")
@@ -85,6 +98,7 @@ function draw(parent, date, json_data){
     var line = d3.svg.line()
         .x(function(d) { return x(d.time); })
         .y(function(d) { return y(d.station.distance); });
+
 
     var svg = d3.select(parent.get(0)).append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -165,7 +179,7 @@ function draw(parent, date, json_data){
         .attr("r", 2)              // 点直径
         .on("mouseover", function(d){
             var format = d3.time.format("%H:%M:%S");
-            tooltip.text(format(d.time));
+            tooltip.text(d.station.name+"\n"+format(d.time));
             d3.select(this).attr("r", "3");                                                       //<circle cx="168" cy="179" r="59"
             return tooltip.style("visibility", "visible");
         })
@@ -227,5 +241,12 @@ function draw(parent, date, json_data){
     function parseTimeForData(s) {
         var t = formatDateTime.parse(s);
         return t;
+    }
+
+    function isEmptyObject(obj) {
+         for (var key in obj) {
+          return false;
+         }
+         return true;
     }
 }

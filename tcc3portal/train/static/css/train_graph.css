@@ -58,3 +58,17 @@ svg {
     border-radius: 4px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
+
+.no_data_tip{
+    background-color: #343434;
+    color: #a1a1a1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 10;
+    font-size: 3em;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
