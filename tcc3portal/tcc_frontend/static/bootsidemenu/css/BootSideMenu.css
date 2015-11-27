@@ -39,13 +39,37 @@
       right:0px;
       left:20px;
 }
+@media (min-width: 300px) {
+      .sidebar {
+                  width: 180px;
+            }
+      .sidebar.sidebar-left{
+            left:0px;
+            right:auto;
+      }
 
+      .sidebar.sidebar-right{
+            right:0px;
+            left:auto;
+      }
+}
 @media (min-width: 400px) {
+      .sidebar {
+                  width: 230px;
+            }
+      .sidebar.sidebar-left{
+            left:0px;
+            right:auto;
+      }
 
+      .sidebar.sidebar-right{
+            right:0px;
+            left:auto;
+      }
 }
 @media (min-width: 528px) {
       .sidebar {
-            width: 300px;
+            width: 230px;
       }
       .sidebar.sidebar-left{
             left:0px;

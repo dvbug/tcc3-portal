@@ -23,10 +23,10 @@ function draw(parent, date, json_data){
 
 
     var xAxisTicksCount = 480; //有多少个横轴点, 80:30min, 160:15min, 480:5min
-    var initStepWidth = 40; // 刻度步长
+    var initStepWidth = 30; // 刻度步长
     //var initWidth = 20000;//影响横轴的显示范围
     var initWidth = initStepWidth * xAxisTicksCount ;
-    var initHeight = 700;
+    var initHeight = 600;
 
     var formatDateTime = d3.time.format("%Y%m%d%H%M%S");
     var formatDate = d3.time.format("%Y%m%d");
@@ -38,7 +38,7 @@ function draw(parent, date, json_data){
 
     if (isEmptyObject(schedules)){
         d3.select(parent.get(0)).append('div')
-            .attr("class", "no_data_tip text-center")
+            .attr("class", "text-center no_data_tip")
             .text("No Data.");
         return;
     }
@@ -113,32 +113,46 @@ function draw(parent, date, json_data){
         .attr("width", width)
         .attr("height", height + margin.top + margin.bottom);
 
+    svg.append("rect")
+        .attr("id", "timelinerange")
+        .attr("y", -margin.top)
+        .attr("width", width)
+        .attr("height", height + margin.top + margin.bottom)
+        .style("fill", "transparent")
+        .on("mousemove", function(e){
+            return d3.select('.svg_time_line').select("line").attr("transform", "translate(" + d3.mouse(this)[0] + ",0)");
+        });
+
 
 
     y.domain(d3.extent(stations,function(d){
             return d.distance;
         }));
 
-    var station = svg.append("g")
-            .attr("class", "station")
-            .selectAll("g")
-            .data(stations)
-            .enter().append("g")
-            .attr("transform", function(d) {
-                //console.log(d);
-                return "translate(0," + y(d.distance) + ")"; });
+    var station_g = svg.append("g").attr("class", "station");
+
+    station_g.append("line")
+        .attr("x1", "0")
+        .attr("x2", "0")
+        .attr("y1", "0")
+        .attr("y2", height);
+    var station = station_g.selectAll("g")
+        .data(stations)
+        .enter().append("g")
+        .attr("transform", function(d) {
+            return "translate(0," + y(d.distance) + ")"; });
 
     // 绘制左侧纵轴, y轴
     station.append("text")
         .attr("x", -6)
         .attr("dy", ".35em")
         .text(function(d) {
-            //console.log(d);
             return d.name; });
 
     // 绘制横向背景线
     station.append("line")
         .attr("x2", width);
+
 
     // 绘制顶部横轴, x轴
     svg.append("g")
@@ -150,6 +164,16 @@ function draw(parent, date, json_data){
         .attr("class", "x bottom axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis.orient("bottom"));
+
+
+    // draw time line
+    var time_line = svg.append("g")
+        .attr("class", "svg_time_line");
+    time_line.append("line")
+        .attr("x1", "0")
+        .attr("x2", "0")
+        .attr("y1", "0")
+        .attr("y2", height);
 
     var train = svg.append("g")
         .attr("class", "train")
@@ -163,31 +187,52 @@ function draw(parent, date, json_data){
     train.append("path")
         .attr("d", function(d) { return line(d.stops); })
         .on("mouseover", function(d){
+             //d3.select(this).classed("hover", true);
+
             tooltip.text("Train No: " + d.trip);
             return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){ return tooltip.style("top",
             (d3.event.pageY-13)+"px").style("left",(d3.event.pageX+13)+"px");})
-        .on("mouseout", function(){ return tooltip.style("visibility", "hidden");});
+        .on("mouseout", function(){
+            //d3.select(this).classed("hover", false);
+            return tooltip.style("visibility", "hidden");
+        })
+        .on("mousedown", function(d){
+            //console.log('path mousedown.')
+            d3.select("body").on("mousedown", function(){
+                svg.selectAll('.train').selectAll("g").classed({"unselected": false, "selected": false});
+                d3.select("body").on("mousedown", null);
+                //console.log('body mousedown.')
+            });
+
+            svg.selectAll('.train').selectAll("g").classed({"unselected": true, "selected": false});
+
+            var selected_paths = svg.selectAll('.train').selectAll("g")
+                .filter(function(td){ return td.trip === d.trip ? this:null;});
+            selected_paths.classed({"unselected": false, "selected": true});
+
+            d3.event.stopPropagation();
+        });
 
 
     // 绘制小圆点
-    train.selectAll("circle")
-        .data(function(d) { return d.stops; })
-        .enter().append("circle")
-        .attr("transform", function(d) {  return "translate(" + x(d.time) + "," + y(d.station.distance) + ")"; })
-        //.attr("value", function (d) { return d.station.name+ d.time;}) // for test
-        .attr("r", 2)              // 点直径
-        .on("mouseover", function(d){
-            var format = d3.time.format("%H:%M:%S");
-            tooltip.text(d.station.name+"\n"+format(d.time));
-            d3.select(this).attr("r", "3");                                                       //<circle cx="168" cy="179" r="59"
-            return tooltip.style("visibility", "visible");
-        })
-        .on("mousemove", function(){ return tooltip.style("top",
-            (d3.event.pageY-13)+"px").style("left",(d3.event.pageX+13)+"px");})
-        .on("mouseout", function(){
-            d3.select(this).attr("r", "2");
-            return tooltip.style("visibility", "hidden");});
+    //train.selectAll("circle")
+    //    .data(function(d) { return d.stops; })
+    //    .enter().append("circle")
+    //    .attr("transform", function(d) {  return "translate(" + x(d.time) + "," + y(d.station.distance) + ")"; })
+    //    //.attr("value", function (d) { return d.station.name+ d.time;}) // for test
+    //    .attr("r", 1.5)              // 点直径
+    //    .on("mouseover", function(d){
+    //        var format = d3.time.format("%H:%M:%S");
+    //        tooltip.text(d.station.name+"\n"+format(d.time));
+    //        d3.select(this).attr("r", "3");                                                       //<circle cx="168" cy="179" r="59"
+    //        return tooltip.style("visibility", "visible");
+    //    })
+    //    .on("mousemove", function(){ return tooltip.style("top",
+    //        (d3.event.pageY-13)+"px").style("left",(d3.event.pageX+13)+"px");})
+    //    .on("mouseout", function(){
+    //        d3.select(this).attr("r", "1.5");
+    //        return tooltip.style("visibility", "hidden");});
 
     function parse_schedule(trip, schedule){
         var train_data = {};
@@ -219,7 +264,7 @@ function draw(parent, date, json_data){
             stations = tmp_stations
         }
 
-        var stops = tmp_stations
+        return tmp_stations
             .map(function(s){
                 return {
                     station: s,
@@ -229,7 +274,6 @@ function draw(parent, date, json_data){
             .sort(function (s1, s2) {
                 return s1.time - s2.time;
             });
-        return stops
     }
 
     function parseTimeForAxis(s) {
@@ -239,12 +283,11 @@ function draw(parent, date, json_data){
     }
 
     function parseTimeForData(s) {
-        var t = formatDateTime.parse(s);
-        return t;
+        return formatDateTime.parse(s);
     }
 
     function isEmptyObject(obj) {
-         for (var key in obj) {
+         for (var i in obj) {
           return false;
          }
          return true;

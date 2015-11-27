@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+{% import "macros/utils.html" as utils_local %}
+
+{% block content %}
+<div class="container-fluid">
+    <form method="post" class="form">
+        {{ form.hidden_tag() }}
+        <div class="form-group ">
+{#            {{ form.line_no.label(class="control-label") }}#}
+            {{ form.line_no(size=20, class="selectpicker show-tick form-control") }}
+            {% for error in form.errors.line_no %}
+             <span style="color:red;">* {{ error }}</span>
+            {% endfor %}
+{#            {{ form.config_file.label(class="control-label") }}#}
+            {{ form.config_file(size=20, class="form-control ") }}
+            {% for error in form.errors.config_file %}
+             <span style="color:red;">* {{ error }}</span>
+            {% endfor %}
+            <input type="submit" value="Upload" class="btn btn-success form-control" >
+        </div>
+    </form>
+</div>
+{% endblock %}

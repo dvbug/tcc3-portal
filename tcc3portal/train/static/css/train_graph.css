@@ -23,7 +23,7 @@ svg {
 
 .train path {
     fill: none;
-    stroke-width: 1.5px;
+    stroke-width: 1px;
 }
 
 .train circle {
@@ -36,10 +36,26 @@ svg {
 .train .L path { stroke: rgb(183,116,9); }
 .train .L circle { fill: rgb(183,116,9); }
 
-.train .B path { stroke: rgb(192,62,29); opacity: 0.3; }
-.train .B circle { fill: rgb(192,62,29); opacity: 0.3;}
-.train .B path:hover { stroke: rgb(192,62,29); opacity: 1; }
-.train .B circle:hover { fill: rgb(192,62,29); opacity: 1;}
+.train .B path { stroke: rgb(192,62,29);  }
+.train .B circle { fill: rgb(192,62,29); }
+
+.train path:hover {
+    stroke-width: 2px;
+}
+
+.selected{
+    opacity: 1;
+}
+.selected path {
+    stroke-width: 2px;
+}
+.unselected{
+   opacity: 0.3;
+}
+.unselected path{
+    stroke-width: 1px;
+}
+
 
 .svg_tooltip{
     position: absolute;
@@ -59,14 +75,25 @@ svg {
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
 
+.svg_time_line line {
+    stroke: #000;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+    font-weight: 700;
+}
+.svg_time_line text {
+    text-anchor: end;
+}
+
 .no_data_tip{
-    background-color: #343434;
-    color: #a1a1a1;
+    background-color: #ec971f;
+    color: #fff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     z-index: 10;
     font-size: 3em;
+    margin: 20px;
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, .15);
     border-radius: 4px;
