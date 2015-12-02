@@ -1,10 +1,11 @@
 body{
     padding-top: 70px;
     padding-bottom:70px;
-    color: #d8d8d8;
+    color: #545454;
     font-size: 13px;
     font-family: 'Open Sans', sans-serif;
-    background: #f6f6f6 url('../img/body-bg.gif') repeat 50% 0;
+    /*background: #f6f6f6 url('../img/body-bg.gif') repeat 50% 0;*/
+    background-color: #fff;
 }
 
 .top-menu {
@@ -276,4 +277,12 @@ background-color: #83a400;
 
 .sidebar {
     margin: 70px 0;
+}
+
+/* a glyphicon delete*/
+.glyphicon-a-remove{
+    color: #d9534f;
+}
+.glyphicon-a-remove:hover{
+    color: #c12e2a;
 }

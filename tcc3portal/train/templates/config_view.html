@@ -3,21 +3,78 @@
 
 {% block content %}
 <div class="container-fluid">
-    <form method="post" class="form">
+    <div class="container">
+        <div>
+            <h2 class="text-center">{{ _("Marey diagram's line config upload.") }}</h2>
+            {% for message in get_flashed_messages() %}
+                {% if message.status == 200 %}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message.message }}
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {% if message.message %}
+                            {{ message.message }}
+                        {% else %}
+                            {{ message }}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <form method="post" class="form-horizontal" role="form"
+              action="{{ url_for('config.upload_line') }}"
+                enctype="multipart/form-data">
         {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
         <div class="form-group ">
 {#            {{ form.line_no.label(class="control-label") }}#}
-            {{ form.line_no(size=20, class="selectpicker show-tick form-control") }}
-            {% for error in form.errors.line_no %}
-             <span style="color:red;">* {{ error }}</span>
-            {% endfor %}
+            <div class="col-sm-3">
+                {{ form.line_no(size=20, class="selectpicker show-tick form-control") }}
+                {% for error in form.errors.line_no %}
+                 <span style="color:red;">* {{ error }}</span>
+                {% endfor %}
+            </div>
 {#            {{ form.config_file.label(class="control-label") }}#}
-            {{ form.config_file(size=20, class="form-control ") }}
-            {% for error in form.errors.config_file %}
-             <span style="color:red;">* {{ error }}</span>
-            {% endfor %}
-            <input type="submit" value="Upload" class="btn btn-success form-control" >
+            <div class="col-sm-6">
+                {{ form.config_file(size=20, class="form-control ", accept=".csv") }}
+                {% for error in form.errors.config_file %}
+                 <span style="color:red;">* {{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="col-sm-3">
+                <input type="submit" value="{{ _('Upload') }}" class="btn btn-success form-control" >
+            </div>
         </div>
     </form>
+    <table class="table table-hover">
+        <thead>
+            <th class="col-sm-1">#</th>
+            <th class="col-sm-2">Line No</th>
+            <th class="col-sm-7">File</th>
+            <th class="col-sm-2">Action</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>01</td>
+                <td>aaaa.csv</td>
+                <td>
+                    <a class="glyphicon-a-remove" href="#"><span class="glyphicon glyphicon-remove "></span></a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>02</td>
+                <td>bbbb.csv</td>
+                <td>
+                    <a class="glyphicon-a-remove" href="#"><span class="glyphicon glyphicon-remove "></span></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
 </div>
 {% endblock %}

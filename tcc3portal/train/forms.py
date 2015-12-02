@@ -8,10 +8,11 @@
     :license: GNU, see LICENSE for more details.
 """
 from flask_wtf import Form
-from wtforms import FileField, SelectField
-from wtforms.validators import DataRequired
+from wtforms import SelectField
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 
 LINES = [
+    ("01", "01"),
     ("02", "02"),
     ("04", "04"),
     ("05", "05"),
@@ -30,6 +31,8 @@ LINES = [
     ("98", "98"),
 ]
 
+
 class LineConfigForm(Form):
     line_no = SelectField('Line No', choices=LINES)
-    config_file = FileField('File', validators=[DataRequired()])
+    config_file = FileField('File', validators=[FileRequired(),
+                                                FileAllowed(['csv', 'tcsv'], 'CSV only!')])
