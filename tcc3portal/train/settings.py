@@ -7,7 +7,29 @@
     :copyright: (c) 2015 by Vito.
     :license: GNU, see LICENSE for more details.
 """
+from tcc3portal.tcc_core.babel import _
+
 
 DAC_HOST_URL = "192.168.1.125:8080"
 
-DAC_FILE_UPLOAD_URL = '/api/v1.0/configs/lines/'
+DAC_API_CONFIGS_LINES_URL = '/api/v1.0/configs/lines'
+
+LINES = [
+    ("01", _("L1")),
+    ("02", _("L2")),
+    ("04", _("L4")),
+    ("05", _("L5")),
+    ("06", _("L6")),
+    ("07", _("L7")),
+    ("08", _("L8")),
+    ("09", _("L9")),
+    ("10", _("L10")),
+    ("13", _("L13")),
+    ("14", _("L14")),
+    ("15", _("L15")),
+    ("94", _("L94")),
+    ("95", _("L95")),
+    ("96", _("L96")),
+    ("97", _("L97")),
+    ("98", _("L98")),
+]

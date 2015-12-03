@@ -49,32 +49,67 @@
             </div>
         </div>
     </form>
-    <table class="table table-hover">
+
+    <ul class="pagination">
+        <li class="disabled"><a>Lines:</a></li>
+        {% for ln, name in totail_lines|sort %}
+            {% if ln in data.keys() %}
+            <li>
+                {% set d = data[ln] %}
+                <a href="#" onclick="getDataByLine('{{ ln }}',{{ d }})">{{ name }}</a>
+    {#            <a class="glyphicon-a-remove" href="#"><span class="glyphicon glyphicon-remove "></span></a>#}
+            </li>
+            {% else %}
+            <li class="disabled"><a>{{ name }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <table id="line_table" class="table table-hover">
         <thead>
             <th class="col-sm-1">#</th>
             <th class="col-sm-2">Line No</th>
-            <th class="col-sm-7">File</th>
-            <th class="col-sm-2">Action</th>
+            <th class="col-sm-2">Seq</th>
+            <th class="col-sm-2">Station Id</th>
+            <th class="col-sm-2">Station Name</th>
+            <th class="col-sm-2">Distance</th>
+            <th class="col-sm-2">Area</th>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>01</td>
-                <td>aaaa.csv</td>
-                <td>
-                    <a class="glyphicon-a-remove" href="#"><span class="glyphicon glyphicon-remove "></span></a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>02</td>
-                <td>bbbb.csv</td>
-                <td>
-                    <a class="glyphicon-a-remove" href="#"><span class="glyphicon glyphicon-remove "></span></a>
-                </td>
-            </tr>
+
         </tbody>
     </table>
+
+    <script>
+        function getDataByLine(ln, d){
+            var body = $('#line_table tbody');
+            body.empty();
+            for(var idx in d){
+                var stn = d[idx];
+                body.append("<tr>");
+                var row = $('#line_table tbody tr:last');
+                row.append("<td>" + (Number(idx)+1) + "</td>");
+                row.append("<td>" + ln + "</td>");
+                row.append("<td>" + stn.seq + "</td>");
+                row.append("<td>" + stn.stn_id + "</td>");
+                row.append("<td>" + stn.stn_name + "</td>");
+                row.append("<td>" + stn.distance + "</td>");
+                row.append("<td>" + stn.area + "</td>");
+            }
+        }
+
+        $(function(){
+{#            $('select.selectpicker option').before().prepend("Line: ");#}
+{#            $(".pagination li a[href='#']")#}
+{#                    .hover(function(){#}
+{#                            console.log($(this).text())#}
+{##}
+{#                        },function(){#}
+{#                            console.log($(this).text()+'out')#}
+{#                        });#}
+
+            $(".pagination li a[href='#'][class!='glyphicon-a-remove']:first").click();
+        });
+    </script>
     </div>
 </div>
 {% endblock %}
