@@ -1,7 +1,7 @@
 # coding:utf-8
 """
-    train.upload_line_config
-    ~~~~~~~~~~~~~~~~~~~~~~~~
+    train.config_view
+    ~~~~~~~~~~~~~~~~~
 
     train data analytics - marey diagram upload_line_config module.
     :copyright: (c) 2015 by Vito.
@@ -15,7 +15,6 @@ from flask import Blueprint, url_for, redirect, render_template, current_app, re
 from werkzeug.utils import secure_filename
 from tcc3portal.tcc_core.babel import _
 from .forms import LineConfigForm
-# from .settings import DAC_API_CONFIGS_LINES_URL
 
 bp = Blueprint('config', __name__, url_prefix='/config')
 

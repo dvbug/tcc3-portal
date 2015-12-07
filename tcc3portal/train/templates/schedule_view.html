@@ -1,0 +1,53 @@
+{% extends "layouts/base.html" %}
+{% import "macros/utils.html" as utils_local %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container">
+        <div>
+            <h2 class="text-center">{{ _("Marey diagram's schedule data upload.") }}</h2>
+            {% for message in get_flashed_messages() %}
+                {% if message.status == 200 %}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message.message }}
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {% if message.message %}
+                            {{ message.message }}
+                        {% else %}
+                            {{ message }}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <form method="post" class="form-horizontal" role="form"
+{#              action="{{ url_for('schedule.upload') }}"#}
+                enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            <div class="form-group ">
+                <div class="col-sm-3">
+                    {{ form.date() }}
+                    {% for error in form.errors.line_no %}
+                     <span style="color:red;">* {{ error }}</span>
+                    {% endfor %}
+                </div>
+    {#            {{ form.config_file.label(class="control-label") }}#}
+                <div class="col-sm-6">
+                    {{ form.file(size=20, class="form-control ", accept=".csv") }}
+                    {% for error in form.errors.config_file %}
+                     <span style="color:red;">* {{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="col-sm-3">
+                    <input type="submit" value="{{ _('Upload') }}" class="btn btn-success form-control" >
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
