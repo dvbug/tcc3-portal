@@ -13,6 +13,7 @@ from tcc3portal.tcc_core.babel import _
 DAC_HOST_URL = "192.168.1.125:8080"
 
 DAC_API_CONFIGS_LINES_URL = '/api/v1.0/configs/lines'
+DAC_API_SCHEDULES_URL = '/api/v1.0/schedules/'
 
 LINES = [
     ("01", _("L1")),
@@ -32,4 +33,9 @@ LINES = [
     ("96", _("L96")),
     ("97", _("L97")),
     ("98", _("L98")),
+]
+
+SCHEDULE_TYPES = [
+    ("PLAN", _("计划")),
+    ("REAL", _("实时")),
 ]

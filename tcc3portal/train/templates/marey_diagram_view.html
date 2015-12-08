@@ -8,7 +8,7 @@
             <div class="span12">
                 <div class="row-fluid">
                     <div class="span12">
-                        <select class="selectpicker show-tick form-control" data-live-search="true">
+                        <select id="line_no" class="selectpicker show-tick form-control" data-live-search="true">
                             <optgroup label="Usable">
                                 <option value="01">01</option>
                             </optgroup>
@@ -54,21 +54,28 @@
                 </div>
                 <div class="row-fluid">
                     <div class="span12">
+                        <select id="line_type" class="selectpicker show-tick form-control">
+                            <option value="plan">Plan</option>
+                            <option value="real">Real</option>
+                            <option value="plan&real">Both</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
                         <div class="btn-group" role="group" aria-label="...">
                             <button type="button" class="btn btn-default">Reset</button>
-                            <button id="btn_confirm" type="button" class="btn btn-default"
-                                     >
-                                Confirm
-                            </button>
+                            <button id="btn_confirm" type="button" class="btn btn-default">Confirm</button>
             {#                onclick="getSchedules($('#train_graph'),'20140702','01','plan')"#}
                             <script>
                                 $('#btn_confirm').click(function () {
                                     var dp = $('#datepicker')[0];
                                     var graph_date = new Date(dp.value);
                                     var str_date =  date_to_string(graph_date);
-                                    var str_line_no = $('.selectpicker')[0].value;
-                                    console.log('date:'+str_date+',line:'+str_line_no)
-                                    getSchedules($('#train_graph'),str_date, str_line_no,'plan')
+                                    var str_line_no = $('#line_no.selectpicker')[0].value;
+                                    var str_line_type = $('#line_type.selectpicker')[0].value;
+                                    console.log('date:'+str_date+',line:'+str_line_no+',type:'+str_line_type);
+                                    getSchedules($('#train_graph'),str_date, str_line_no,str_line_type)
                                 });
 
                                 function date_to_string(date){

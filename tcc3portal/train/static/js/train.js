@@ -3,8 +3,10 @@
  */
 
 function getSchedules(parent, date,lineNo,type){
+    var url = "http://192.168.1.125:8080/api/v1.0/schedules/"+date+"/"+lineNo+"/"+type+"?callback=?";
+    console.log(url)
     $.jsonp({
-        url:"http://192.168.1.125:8080/api/v1.0/schedules/"+date+"/"+lineNo+"/"+type+"?callback=?",
+        url: url,
         //url:"http://192.168.1.125:8080/api/v1.0/schedules/"+date+"/"+lineNo+"/"+type+"/1023&1024?callback=?",
         success: function(json_data){
             draw(parent, date, json_data)
@@ -34,7 +36,7 @@ function draw(parent, date, json_data){
 
     var stations = []; // lazy load.
     var trains = [];
-    var schedules = json_data.data.schedules;
+    var schedules = json_data; //json_data.data.schedules;
 
     if (isEmptyObject(schedules)){
         d3.select(parent.get(0)).append('div')
@@ -44,8 +46,12 @@ function draw(parent, date, json_data){
     }
 
     //trains.
-    for(var trip in schedules){
-        trains.push(parse_schedule(trip, schedules[trip]))
+    for(var type in json_data.data){
+        var type_schedules = json_data.data[type];
+
+        for(var trip in type_schedules){
+            trains.push(parse_schedule(trip, type_schedules[trip]))
+        }
     }
     //var tmp_trains = trains;
     //var tmp_max_times = [];
@@ -179,7 +185,8 @@ function draw(parent, date, json_data){
         .attr("class", "train")
         .attr("clip-path", "url(#clip)")
         .selectAll("g")
-        .data(trains.filter(function(d) { return /[NLB]/.test(d.type); }))
+        //.data(trains.filter(function(d) { return /[NLB]/.test(d.type); }))
+        .data(trains)
         .enter().append("g")
         .attr("class", function(d) { return d.type; });
 
