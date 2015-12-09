@@ -30,14 +30,14 @@ svg {
     stroke: #fff;
 }
 
-.train .N path { stroke: rgb(34,34,34); }
-.train .N circle { fill: rgb(34,34,34); }
+/*.train .N path { stroke: rgb(34,34,34); }*/
+/*.train .N circle { fill: rgb(34,34,34); }*/
 
-.train .L path { stroke: rgb(183,116,9); }
-.train .L circle { fill: rgb(183,116,9); }
+.train .REAL path { stroke: rgb(21, 164, 0); }
+.train .REAL circle { fill: rgb(21, 164, 0); }
 
-.train .B path { stroke: rgb(192,62,29);  }
-.train .B circle { fill: rgb(192,62,29); }
+.train .PLAN path { stroke: rgb(192,62,29);  }
+.train .PLAN circle { fill: rgb(192,62,29); }
 
 .train path:hover {
     stroke-width: 2px;
