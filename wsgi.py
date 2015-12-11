@@ -9,8 +9,9 @@
 """
 
 from werkzeug.wsgi import DispatcherMiddleware
-from tcc3portal import api, portal, train
-from . import settings_override
+
+from tcc3portal import api, portal, train, settings_override
+
 
 application = DispatcherMiddleware(portal.create_app(settings_override=settings_override), {
     '/api': api.create_app(settings_override=settings_override),
