@@ -35,11 +35,12 @@ from ..tcc_core import factory
 # ))
 
 
-def create_app(settings_override=default_settings or None, register_security_blueprint=False):
+def create_app(settings_override=None, register_security_blueprint=False):
     """Returns the tcc3portal API application instance"""
 
-    app = factory.create_app(__name__, __path__, settings_override,
+    app = factory.create_app(__name__, __path__, settings_override=default_settings,
                              register_security_blueprint=register_security_blueprint)
+    app.config.from_object(settings_override)
 
     # Set the default JSON encoder
     app.json_encoder = JSONEncoder
