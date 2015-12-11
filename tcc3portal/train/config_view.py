@@ -35,6 +35,9 @@ def index():
     except HTTPException:
         data = {}
         flash(_("Can not connect to DAC server."))
+    except ConnectionError:
+        data = {}
+        flash(_("Can not connect to DAC server."))
     finally:
         conn.close()
 

@@ -51,6 +51,10 @@ def upload():
         except HTTPException:
             resp_data = {}
             flash(_("Can not connect to DAC server."))
+
+        except ConnectionError:
+            data = {}
+            flash(_("Can not connect to DAC server."))
         finally:
             conn.close()
         flash(resp_data)
