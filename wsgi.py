@@ -18,3 +18,7 @@ application = DispatcherMiddleware(portal.create_app(settings_override=settings_
     '/train': train.create_app(settings_override=settings_override),
 })
 
+if __name__ == '__main__':
+    from werkzeug.serving import run_simple
+    run_simple('0.0.0.0', 9000, application, use_reloader=True, use_debugger=True)
+
