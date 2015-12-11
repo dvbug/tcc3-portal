@@ -42,10 +42,15 @@ def upload():
             conn = HTTPConnection(current_app.config['DAC_HOST_URL'])
             conn.request("POST", upload_api, data, headers)
             resp = conn.getresponse()
-            resp_data = json.loads(resp.read().decode('utf-8'))
-            print(resp_data)
+            if resp.code == 200:
+                resp_data = json.loads(resp.read().decode('utf-8'))
+                print(resp_data)
+            else:
+                raise HTTPException()
+
         except HTTPException:
             resp_data = {}
+            flash(_("Can not connect to DAC server."))
         finally:
             conn.close()
         flash(resp_data)

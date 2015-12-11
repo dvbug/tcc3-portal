@@ -8,9 +8,7 @@
     :license: GNU, see LICENSE for more details.
 """
 
-from werkzeug.serving import run_simple
 from werkzeug.wsgi import DispatcherMiddleware
-
 from tcc3portal import api, portal, train
 
 application = DispatcherMiddleware(portal.create_app(), {
@@ -19,4 +17,5 @@ application = DispatcherMiddleware(portal.create_app(), {
 })
 
 if __name__ == '__main__':
+    from werkzeug.serving import run_simple
     run_simple('0.0.0.0', 9000, application, use_reloader=True, use_debugger=True)

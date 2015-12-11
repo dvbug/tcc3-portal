@@ -2,8 +2,8 @@
  * Created by devnode on 15-11-24.
  */
 
-function getSchedules(parent, date,lineNo,type){
-    var url = "http://192.168.1.125:8080/api/v1.0/schedules/"+date+"/"+lineNo+"/"+type+"?callback=?";
+function getSchedules(dac_url, parent, date,lineNo,type){
+    var url = "http://"+dac_url +date+"/"+lineNo+"/"+type+"?callback=?";
     console.log(url)
     $.jsonp({
         url: url,
@@ -12,7 +12,7 @@ function getSchedules(parent, date,lineNo,type){
             draw(parent, date, json_data)
         },
         error: function() {
-            alert("on_train_graph_click error "+"http://192.168.1.125:8080/api/v1.0/schedules/"+date+"/"+lineNo+"/"+type);
+            alert("on_train_graph_click error "+ url);
         }
     });
 }

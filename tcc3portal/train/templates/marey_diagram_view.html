@@ -67,6 +67,8 @@
                             <button id="btn_confirm" type="button" class="btn btn-default">Confirm</button>
             {#                onclick="getSchedules($('#train_graph'),'20140702','01','plan')"#}
                             <script>
+                                var dac_url = "{{ get_app_config('DAC_HOST_URL')+ get_app_config('DAC_API_SCHEDULES_URL') }}";
+
                                 $('#btn_confirm').click(function () {
                                     var dp = $('#datepicker')[0];
                                     var graph_date = new Date(dp.value);
@@ -74,7 +76,7 @@
                                     var str_line_no = $('#line_no.selectpicker')[0].value;
                                     var str_line_type = $('#line_type.selectpicker')[0].value;
                                     console.log('date:'+str_date+',line:'+str_line_no+',type:'+str_line_type);
-                                    getSchedules($('#train_graph'),str_date, str_line_no,str_line_type)
+                                    getSchedules(dac_url ,$('#train_graph'),str_date, str_line_no,str_line_type)
                                 });
 
                                 function date_to_string(date){

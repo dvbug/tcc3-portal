@@ -9,12 +9,6 @@
 """
 from tcc3portal.tcc_core.babel import _
 
-
-DAC_HOST_URL = "192.168.1.125:8080"
-
-DAC_API_CONFIGS_LINES_URL = '/api/v1.0/configs/lines'
-DAC_API_SCHEDULES_URL = '/api/v1.0/schedules/'
-
 LINES = [
     ("01", _("L1")),
     ("02", _("L2")),

@@ -28,9 +28,13 @@ def index():
         conn = HTTPConnection(current_app.config['DAC_HOST_URL'])
         conn.request("GET", configs_lines_api_url)
         resp = conn.getresponse()
-        data = json.loads(resp.read().decode())
+        if resp.code == 200:
+            data = json.loads(resp.read().decode())
+        else:
+            raise HTTPException()
     except HTTPException:
         data = {}
+        flash(_("Can not connect to DAC server."))
     finally:
         conn.close()
 

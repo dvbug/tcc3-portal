@@ -18,6 +18,13 @@ def tcc_frontend_find_resource(filename, cdn, local=True):
     return resource_url
 
 
+def get_app_config(variable_name):
+    try:
+        return current_app.config[variable_name]
+    except KeyError:
+        return None
+
+
 class StaticCDN(object):
     """A CDN that serves content from the local application.
 
@@ -60,3 +67,5 @@ class TccFrontend(object):
                 'static': static,
             },
         }
+
+        app.jinja_env.globals['get_app_config'] = get_app_config
