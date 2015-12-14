@@ -68,7 +68,8 @@ def upload_line():
             resp = conn.getresponse()
             resp_data = json.loads(resp.read().decode('utf-8'))
             print(resp_data)
-        except HTTPException:
+        except HTTPException as e:
+            print("POST CONFIG FILE ERROR", e)
             resp_data = {}
         finally:
             conn.close()
