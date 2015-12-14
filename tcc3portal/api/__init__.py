@@ -8,31 +8,11 @@
     :license: GNU, see LICENSE for more details.
 """
 from functools import wraps
-
 from flask import jsonify
-# from flask_security import login_required
-# from flask_nav.elements import Navbar, View, Subgroup, Link, Text, Separator
 from . import settings as default_settings
 from ..tcc_core import Tcc3PortalError, Tcc3PortalFormError
 from ..tcc_core.helpers import JSONEncoder
 from ..tcc_core import factory
-
-# from ..core import nav as apinav
-#
-# apinav.register_element('api_nav_top', Navbar(
-#     Link('TCC3 Portal', '../'),
-#     View('Api List', 'list.api_list'),
-#     Subgroup('Tech Support',
-#              Link('flask', dest='http://dormousehole.readthedocs.org/en/latest/index.html'),
-#              Link('flask-wtf', dest='http://docs.jinkan.org/docs/flask-wtf/index.html'),
-#              Link('flask-nav', dest='http://pythonhosted.org/flask-nav/'),
-#              Link('flask-pymongo', dest='http://flask-pymongo.readthedocs.org/en/latest/'),
-#              Link('flask-bootstrap', dest='http://www.pythonhosted.org/Flask-Bootstrap/'),
-#              Link('flask-restful', dest='http://www.pythondoc.com/Flask-RESTful/index.html'),
-#              Separator(),
-#              Link('mongodb', dest='https://www.mongodb.org/'),
-#              )
-# ))
 
 
 def create_app(settings_override=None, register_security_blueprint=False):
