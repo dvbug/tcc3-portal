@@ -30,6 +30,6 @@ LINES = [
 ]
 
 SCHEDULE_TYPES = [
-    ("PLAN", _("计划")),
-    ("REAL", _("实时")),
+    ("PLAN", _("PlanTime")),
+    ("REAL", _("RealTime")),
 ]

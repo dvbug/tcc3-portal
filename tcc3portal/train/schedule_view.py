@@ -12,7 +12,7 @@ import datetime
 from urllib import parse
 from http.client import HTTPConnection, HTTPException
 
-from flask import Blueprint, url_for, redirect, render_template, current_app, request, json, flash
+from flask import Blueprint, url_for, redirect, render_template, current_app, json, flash
 from werkzeug.utils import secure_filename
 from tcc3portal.tcc_core.babel import _
 from .forms import ScheduleForm

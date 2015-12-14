@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-15 03:51+0800\n"
+"POT-Creation-Date: 2015-12-14 15:52+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,9 +19,9 @@ msgstr ""
 
 #: sso.py:103 sso.py:108
 msgid "Please login to access this page."
-msgstr ""
+msgstr "请登录后访问该页面。"
 
 #: sso.py:112
 msgid "Please login for access."
-msgstr ""
+msgstr "请登录后访问。"
 
