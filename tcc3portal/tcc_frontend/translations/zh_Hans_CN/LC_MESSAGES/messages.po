@@ -34,8 +34,8 @@ msgstr "%(flask)s技术提供"
 
 #: templates/frontend/footer.html:11
 #, python-format
-msgid "Copyright &copy; 2015, %(author)s"
-msgstr "Copyright &copy; 2015, %(author)s"
+msgid "Copyright &copy; 2015 %(author)s"
+msgstr "Copyright &copy; 2015 %(author)s"
 
 #: templates/frontend/navbar_login.html:2
 msgid "Welcome, Anonymous!"
