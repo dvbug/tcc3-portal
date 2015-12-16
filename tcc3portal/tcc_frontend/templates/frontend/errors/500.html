@@ -1,9 +1,19 @@
 {% extends "frontend/base.html" %}
+{% import "frontend/utils.html" as utils %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
 {% block inner_content %}
-<h1 class="text-center">500 {{ _('Internal Server Error.') }}</h1>
+{#<h1 class="text-center">500 {{ _('Internal Server Error.') }}</h1>#}
+{#    <div class="page-500-img">#}
+{#        <img src="{{ tcc_frontend_find_resource('img/404.png', cdn='local') }}">#}
+{#    </div>#}
+    <div class="page-500-content">
+        <h1 class="h1">500 {{ _('Sorry,Internal Server Error.') }}</h1>
+        <a class="btn btn-default" href="javascript:location.reload()">{{ _('Refrash') }}</a>
+        {{ utils.space(4)}}or{{ utils.space(4)}}
+        <a class="btn btn-info" href="/">{{ _('Go Home') }}</a>
+    </div>
 {% endblock %}
 </div>
 {% endblock %}

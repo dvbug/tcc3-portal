@@ -7,6 +7,28 @@ body{
     /*background: #f6f6f6 url('../img/body-bg.gif') repeat 50% 0;*/
     background-color: #fff;
 }
+/* for 404 page */
+.page-404-content{
+    clear: both;
+    margin-top: 40px;
+    text-align: center;
+}
+.page-404-img{
+    clear: both;
+    text-align: center;
+    height: 430px;
+}
+/* for 500 page */
+.page-500-content{
+    clear: both;
+    margin-top: 40px;
+    text-align: center;
+}
+.page-500-img{
+    clear: both;
+    text-align: center;
+    height: 430px;
+}
 
 .top-menu {
     font-family: Arial, sans-serif;

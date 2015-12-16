@@ -1,5 +1,5 @@
 {% macro space(count) %}
-{% for i in range(10) %}&nbsp;{% endfor %}
+{% for i in range(count) %}&nbsp;{% endfor %}
 {% endmacro %}
 {% macro static_css(filename) %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/'+filename) }}">
