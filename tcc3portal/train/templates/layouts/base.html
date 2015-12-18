@@ -8,6 +8,7 @@
 
 {% block navbar_main_ul_items %}
     <li {{ utils.try_active_style('marey.index') }}><a href="{{ url_for('marey.index') }}">{{ _('Marey Diagram') }}</a></li>
+    <li {{ utils.try_active_style('section.index') }}><a href="{{ url_for('section.index') }}">{{ _('Section') }}</a></li>
 {#    <li {{ utils.try_active_style('#') }}><a href="#">{{ _('OtherPage1') }}</a></li>#}
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ _('Congfig') }}<b class="caret"></b></a>
